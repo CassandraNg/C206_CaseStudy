@@ -5,7 +5,9 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
-		itemList.add(new Item("Macbook", "Used Macbook, in good condition", 1500.0, "12/9/21 - 15/10/21",2));
+		itemList.add(new Item("Apple Macbook", "Used Macbook, in good condition", 1500.0, "12/9/21 - 15/10/21",2));
+
+		itemList.add(new Item("Apple Iphone XS Max", "Unused Iphone XS Max", 2700.0, "21/01/21 - 15/02/21",5));
 		
 		int option = 0;
 		
@@ -13,6 +15,7 @@ public class C206_CaseStudy {
 			
 			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
+				
 				//view all items
 				C206_CaseStudy.viewAllItem(itemList);
 			}
@@ -33,13 +36,18 @@ public class C206_CaseStudy {
 					System.out.println("Item does not exist.");
 				}
 			}
+			else if (option == 4) {
+				
+		
+				
+				
+				
+			}
 		}
 		
 	}
-	
 	public static String retrieveAllItem(ArrayList<Item> itemList) {
 		String output = "";
-		
 		for (int i = 0; i< itemList.size(); i++) {
 			int itemNum = i+1;
 			output += String.format("%-10d %-20s %-35s $%-15.2f %-25s $%-15d\n", 
@@ -54,6 +62,7 @@ public class C206_CaseStudy {
 		return output;
 	}
 	
+	
 	public static void viewAllItem(ArrayList<Item> itemList) {
 		String output = String.format("%-10s %-20s %-35s %-15s %-25s %-15s\n", 
 				"ITEM NO.",
@@ -65,6 +74,10 @@ public class C206_CaseStudy {
 		 output += retrieveAllItem(itemList);	
 		System.out.println(output);
 	}
+	
+	
+	
+
 	
 	public static Item inputItem() {
 		String name = Helper.readString("Enter name > ");
@@ -93,4 +106,8 @@ public class C206_CaseStudy {
 		}
 		return isDelete;
 	}
+	
+	
+	
+	
 }
