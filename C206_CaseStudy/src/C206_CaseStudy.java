@@ -16,8 +16,9 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
 				
-				//view all items
+				//view item
 				C206_CaseStudy.viewAllItem(itemList);
+				System.out.println("okay");
 			}
 			else if (option == 2) {
 				//add an item
