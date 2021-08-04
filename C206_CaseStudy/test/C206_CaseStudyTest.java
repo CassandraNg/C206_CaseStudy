@@ -15,8 +15,14 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
-	public void c206_test() {
+	public void testAddDeal() {
 		//fail("Not yet implemented"); 
+		assertTrue("C206_CaseStudy_SampleTest ",true);
+	}
+	
+	@Test
+	public void testRetrieveAllDeals() {
+		
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
 
