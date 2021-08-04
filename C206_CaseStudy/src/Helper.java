@@ -195,8 +195,12 @@ public class Helper {
     cal.setLenient(false);
     cal.setTime(date);
     return cal.get(Calendar.YEAR);
+<<<<<<< HEAD
   } 
   
+=======
+  }
+>>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
 
   public static int getMonth(Date date) {
     Calendar cal = Calendar.getInstance();
