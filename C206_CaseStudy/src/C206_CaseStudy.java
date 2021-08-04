@@ -30,6 +30,22 @@ public class C206_CaseStudy {
 				
 
 			} else if (option == 2) {
+				option = Helper.readInt("Enter an option > ");
+				
+				while (option != 5) {
+					
+					if (option == 1) {
+						C206_CaseStudy.viewAllCategory(categoryList);
+					}
+					else if (option == 2) {
+						Category name = inputCategory();
+						C206_CaseStudy.addCategory(categoryList, name);
+					}
+					else if (option == 3) {
+						C206_CaseStudy.viewAllCategory(categoryList);
+						C206_CaseStudy.deleteCategory(categoryList);
+					}
+				}
 				
 				
 
