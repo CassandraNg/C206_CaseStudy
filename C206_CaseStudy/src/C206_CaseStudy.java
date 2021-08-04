@@ -4,14 +4,14 @@ import java.util.ArrayList;
 <<<<<<< HEAD
 
 import com.sun.tools.corba.se.idl.toJavaPortable.Helper;
->>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
+//>>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
 
 public class C206_CaseStudy {
 
 	private static final int OPTION_QUIT = 6;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		ArrayList<Category> categoryList = new ArrayList<Category>();
 		 
 		
@@ -54,7 +54,7 @@ public class C206_CaseStudy {
 		}		
 		
 
-=======
+//=======
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
 		itemList.add(new Item("Macbook", "Used Macbook, in good condition", 1500.0, "12/9/2021 - 15/10/2021", 15));
@@ -127,7 +127,7 @@ public class C206_CaseStudy {
 		
 		Item item = new Item(name, description, minimumBid, date, increment);
 		return item;
->>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
+//>>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
 	}
 	public static void menu() {
 		C206_CaseStudy.setHeader("AUCTION APP");
