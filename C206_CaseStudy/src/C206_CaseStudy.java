@@ -1,9 +1,9 @@
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+//<<<<<<< HEAD
+//=======
+//<<<<<<< HEAD
 
-import com.sun.tools.corba.se.idl.toJavaPortable.Helper;
+//import com.sun.tools.corba.se.idl.toJavaPortable.Helper;
 //>>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
 
 public class C206_CaseStudy {
@@ -59,7 +59,7 @@ public class C206_CaseStudy {
 		
 		itemList.add(new Item("Macbook", "Used Macbook, in good condition", 1500.0, "12/9/2021 - 15/10/2021", 15));
 		
-		int option = 0;
+		option = 0;
 		
 		while (option != 5) {
 			
