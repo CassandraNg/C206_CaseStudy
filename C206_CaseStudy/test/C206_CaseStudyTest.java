@@ -32,12 +32,11 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-<<<<<<< HEAD
 	public void testRetrieveAllDeals() {
 		
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
-=======
+
 	public void testAddItem() {
 		
 		// item list exists, is not null, so that can add a new item
@@ -74,8 +73,7 @@ public class C206_CaseStudyTest {
 		
 		//test if the expected output string same as the list of items retrieved 
 		allItem = C206_CaseStudy.retrieveAllItem(itemList);
->>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
-
+		
 		output = String.format("%-10d %-20s %-35s $%-15.2f %-25s $%-15d\n",1,"Apple Macbook", "Used Macbook, in good condition", 1500.0, "12/9/21 - 15/10/21",2);
 		output += String.format("%-10d %-20s %-35s $%-15.2f %-25s $%-15d\n",2,"Apple Iphone XS Max", "Unused Iphone XS Max", 2700.0, "21/01/21 - 15/02/21",2);
 					
