@@ -195,7 +195,7 @@ public class Helper {
     cal.setLenient(false);
     cal.setTime(date);
     return cal.get(Calendar.YEAR);
-  }
+  } 
   
 
   public static int getMonth(Date date) {
