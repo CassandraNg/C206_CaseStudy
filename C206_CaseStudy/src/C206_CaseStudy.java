@@ -3,8 +3,6 @@ import java.util.ArrayList;
 
 import com.sun.tools.corba.se.idl.toJavaPortable.Helper;
 
-=======
->>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
@@ -83,7 +81,7 @@ public class C206_CaseStudy {
 		return item;
 	}
 
-<<<<<<< HEAD
+
 	public static Deal inputDeal() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
@@ -101,7 +99,7 @@ public class C206_CaseStudy {
 	
 	public void RetrieveAllDeals() {
 		
-=======
+
 	public static void addItem(ArrayList<Item> itemList, Item item) {
 		itemList.add(item);
 		System.out.println("Item added successfully!");
@@ -117,6 +115,5 @@ public class C206_CaseStudy {
 			}
 		}
 		return isDelete;
->>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
 	}
 }
