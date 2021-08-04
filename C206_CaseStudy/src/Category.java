@@ -2,6 +2,7 @@
 public class Category {
 	private String name;
 	private boolean isAvailable;
+	
 
 	public Category(String name) {
 		super();

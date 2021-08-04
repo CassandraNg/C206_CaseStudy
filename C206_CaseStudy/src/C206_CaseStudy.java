@@ -7,6 +7,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<Category> categoryList = new ArrayList<Category>();
 		
+		
 		categoryList.add(new Category("Jewellery"));
 		categoryList.add(new Category("Books"));
 		

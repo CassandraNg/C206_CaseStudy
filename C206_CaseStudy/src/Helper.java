@@ -196,6 +196,7 @@ public class Helper {
     cal.setTime(date);
     return cal.get(Calendar.YEAR);
   }
+  
 
   public static int getMonth(Date date) {
     Calendar cal = Calendar.getInstance();
