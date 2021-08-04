@@ -24,17 +24,17 @@ public class C206_CaseStudyTest {
 	
 	@Before
 	public void setUp() throws Exception {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		C1 = new Category("Jewellery");
 		C2 = new Category("Books");
-=======
+//=======
 		//prepare Test Data
 		item1 = new Item("Apple Macbook", "Used Macbook, in good condition", 1500.0, "12/9/21 - 15/10/21",2);
 		item2 = new Item("Apple Iphone XS Max", "Unused Iphone XS Max", 2700.0, "21/01/21 - 15/02/21",2);
 		itemList = new ArrayList<Item>();
 		
-	}
->>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
+	//}
+//>>>>>>> branch 'master' of https://github.com/CassandraNg/C206_CaseStudy
 
 		categoryList= new ArrayList<Category>();
 		
