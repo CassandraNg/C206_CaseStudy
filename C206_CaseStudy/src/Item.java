@@ -4,20 +4,23 @@ public class Item {
 	private String name;
 	private String description;
 	private double minimumBid;
-	private String date;
+	private String startDate;
+	private String endDate;
 	private int increment;
 	
+	// test commit 
 	
-	public Item(String name, String description, double minimumBid, String date, int increment) {
+	public Item(String name, String description, double minimumBid, String startDate, String endDate, int increment) {
 		this.name = name;
 		this.description = description;
 		this.minimumBid = minimumBid;
-		this.date = date;
+		this.startDate = startDate;
+		this.endDate = endDate;
 		this.increment = increment;
 	}
 
 	public String toString() {
-		return "Item [name=" + name + ", description=" + description + ", minimumBid=" + minimumBid + ", date=" + date
+		return "Item [name=" + name + ", description=" + description + ", minimumBid=" + minimumBid + ", startDate=" + startDate + ", endDate=" + endDate 
 				+ ", increment=" + increment + "]";
 	}
 
@@ -27,7 +30,9 @@ public class Item {
 	
 	public double getMinimumBid() {	return minimumBid; }
 	
-	public String getDate() { return date; }
+	public String getStartDate() { return startDate; }
+	
+	public String getEndDate() { return endDate; }
 	
 	public int getIncrement() { return increment; }
 	
@@ -37,9 +42,12 @@ public class Item {
 	
 	public void setMinimumBid(double minimumBid) { this.minimumBid = minimumBid; }
 	
-	public void setDate(String date) { this.date = date; }
+	public void setStartDate(String startDate) { this.startDate = startDate; }
+	
+	public void setEndDate(String endDate) { this.endDate = endDate; }
 	
 	public void setIncrement(int increment) { this.increment = increment; }
 	
 	
 }
+
