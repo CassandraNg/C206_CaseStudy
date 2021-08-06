@@ -56,7 +56,7 @@ public void testAdduserAccount() {
 	//Add another item. test The size of the list is 2?
 	C206_CaseStudy.addUserAccount(uAList, uA2);
 	assertEquals("Test that User Account arraylist size is 2?", 2, uAList.size());
-}
+} 
 
 @Test
 public void testRetrieveAllUserAccount() {

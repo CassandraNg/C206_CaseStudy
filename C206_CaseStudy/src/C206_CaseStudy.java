@@ -260,7 +260,7 @@ public class C206_CaseStudy {
 		if (isDeleted == false) {
 			System.out.println("Invalid category name");
 		} else {
-			System.out.println("Category " + name + " is deleted");
+			System.out.println("Category " + name + " is deleted"); 
 		}
 	}
 //------------------------------------------------------------------------------	
