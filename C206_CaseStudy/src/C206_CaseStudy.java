@@ -22,6 +22,10 @@ public class C206_CaseStudy {
 		itemList.add(new Item("Macbook", "Used Macbook, in good condition", 1500.0, "12/9/2021", "15/10/2021", 15));
 //------------------------------------------------------------------------------
 //-------------------------------Bid, Halimah-----------------------------------
+        ArrayList<Bid> bidList = new ArrayList<Bid>();
+		
+		bidList.add(new Bid(1, "Acer Laptop", "seller@gmail.com", "buyer@gmail.com", "2021-12-31",70));
+		bidList.add(new Bid(2, "Lenovo Laptop", "seller2@gmail.com", "buyer2@gmail.com", "2021-12-31", 65));
 //------------------------------------------------------------------------------
 //-------------------------------Deal, Xin Yi-----------------------------------
 //------------------------------------------------------------------------------
@@ -69,13 +73,16 @@ public class C206_CaseStudy {
 				System.out.println("4. Quit");
 				int choice = Helper.readInt("Enter an option > ");
 				if (choice == 1) {
+					// View all category
 					C206_CaseStudy.setHeader("View Category");
 					C206_CaseStudy.viewAllCategory(categoryList);
 				}else if (choice == 2) {
+					// Add category
 					C206_CaseStudy.setHeader("Add Category");
 					Category name = inputCategory();
 					C206_CaseStudy.addCategory(categoryList, name);
 				}else if (choice == 3) {
+					// Delete category 
 					C206_CaseStudy.setHeader("Delete Category");
 					C206_CaseStudy.viewAllCategory(categoryList);
 					C206_CaseStudy.deleteCategory(categoryList);
@@ -128,9 +135,35 @@ public class C206_CaseStudy {
 				System.out.println("2. Add Bid");
 				System.out.println("3. Delete Bid");
 				System.out.println("4. Quit");
+				option = Helper.readInt("Enter an option > ");
 				
-				
-
+				if (option == 1) {
+					//show all bid transactions
+					C206_CaseStudy.viewAllBids(bidList);
+		
+				} else if (option == 2) {
+					//add bid transaction
+					Bid b1 = inputBid();
+					C206_CaseStudy.addBid(bidList, b1);
+					
+				} else if (option == 3) {
+					//Delete bid transaction
+					C206_CaseStudy.retrieveAllBids(bidList);
+					int id = Helper.readInt("Enter bid ID > ");				
+					boolean deleteResult = C206_CaseStudy.deleteBid(bidList, id);
+					
+					if(deleteResult == true) {
+						System.out.println("Bid transaction successfully deleted");
+					} else {
+						System.out.println("Bid transaction does not exist");
+					}
+					
+				} else if (option == 4){
+					System.out.println("Bye!");
+					
+				} else {
+					System.out.println("Invalid option");
+				}	
 			} else if (option == 5) {
 				
 				
@@ -386,6 +419,54 @@ public class C206_CaseStudy {
 
 //------------------------------------------------------------------------------
 //-------------------------------Bid, Halimah-----------------------------------
+	public static Bid inputBid() {
+		int id = Helper.readInt("Enter bid ID > ");
+		String name = Helper.readString("Enter bid item name > ");
+		String sellerEmail = Helper.readString("Enter seller Email > ");
+		String buyerEmail = Helper.readString("Enter buyer Email > ");
+		String endDate = Helper.readString("Enter end date > ");
+		int price = Helper.readInt("Enter price > $");
+		
+		Bid b1 = new Bid (id,name,sellerEmail,buyerEmail,endDate,price);
+		return b1;
+	}
+	
+	public static void addBid(ArrayList<Bid> bidList, Bid b1) {
+		bidList.add(b1);
+		System.out.println("Bid transactions added successfully!");
+	}
+	
+	public static String retrieveAllBids(ArrayList<Bid> bidList) {
+		String output = "";
+		
+		for (int i = 0; i < bidList.size(); i++) {
+			output += String.format("%-10d %-20s %-20s %-20s %-20s %-10d\n", bidList.get(i).getId(), bidList.get(i).getName(), 
+					bidList.get(i).getSellerEmail(), bidList.get(i).getBuyerEmail(), bidList.get(i).getEndDate(), bidList.get(i).getPrice());
+		}
+		return output;
+	}
+	
+	public static void viewAllBids(ArrayList<Bid> bidList) {
+		C206_CaseStudy.setHeader("BidList");
+		String output = String.format("%-10s %-20s %-20s %-20s %-20s %-10s\n", 
+				"Bid ID", "Name", "Seller Email", "Buyer Email", "End Date", "Price");
+		
+		output += retrieveAllBids(bidList);
+		System.out.println(output);
+	}
+	
+	public static boolean deleteBid(ArrayList<Bid> bidList, int id) {
+		
+		boolean isDelete = false;
+		
+		for (int i = 0; i < bidList.size(); i++) {
+			if (id == (bidList.get(i).getId())) {
+				
+				isDelete = true;
+				bidList.remove(i);
+			}
+		} return isDelete;
+	}
 //------------------------------------------------------------------------------
 //-------------------------------Deal, Xin Yi-----------------------------------
 //------------------------------------------------------------------------------

@@ -28,6 +28,10 @@ public class C206_CaseStudyTest {
 	private ArrayList<Item> itemList;
 //----------------------------------------
 //---------------Bid, Halimah-------------
+	private Bid b1;
+	private Bid b2;
+	
+	private ArrayList<Bid> bidList;
 //----------------------------------------
 //---------------Deal, Xin Yi-------------
 //----------------------------------------	
@@ -48,6 +52,7 @@ public class C206_CaseStudyTest {
 //-----------Category, Cassandra----------
 	C1 = new Category("Jewellery");
 	C2 = new Category("Books");
+	
 	categoryList= new ArrayList<Category>();
 //------------------------------------------
 //---------------Item, Ariqah---------------
@@ -58,6 +63,10 @@ public class C206_CaseStudyTest {
 	itemList = new ArrayList<Item>();	
 //------------------------------------------
 //---------------Bid, Halimah---------------
+	bidList = new ArrayList<Bid>();
+	
+	b1 = new Bid(1, "Acer Laptop", "seller@gmail.com", "buyer@gmail.com", "2021-12-31", 70);
+	b2 = new Bid(2, "Lenovo Laptop", "seller2@gmail.com", "buyer2@gmail.com", "2021-12-31", 65);
 //------------------------------------------
 //---------------Deal, Xin Yi---------------
 //------------------------------------------
@@ -272,20 +281,74 @@ public void testDeleteUserAccount() {
 
 //------------------------------------------------------------------------------------
 //----------------------------------Bid, Halimah--------------------------------------
+	@Test
+	public void testAddBid() {
+		assertNotNull(bidList);  //list not null
+		
+		C206_CaseStudy.addBid(bidList,b1); //add b1 to list
+		assertEquals(1,bidList.size()); //check list size = 1 after adding b1
+		
+		assertSame(b1, bidList.get(0)); //check b1 = 1st bid in list
+		
+		C206_CaseStudy.addBid(bidList,b2); //add b2 to list
+		assertEquals(2,bidList.size());  //check list size = 2 after adding b2
+		
+		assertSame(b2, bidList.get(1));   //check b2 = 2nd bid in list
+	}
+	
+	@Test
+	public void testShowBid() {
+		assertNotNull(bidList); //list not null
+		
+		String allBid = C206_CaseStudy.retrieveAllBids(bidList);
+		String testOutput = "";
+		assertEquals(testOutput,allBid);  //check bidList retrieved from C206_CaseStudy is empty
+		
+		C206_CaseStudy.addBid(bidList,b1);  
+		C206_CaseStudy.addBid(bidList,b2);
+		assertEquals(2,bidList.size());  //check bidList size = 2, after adding 2 b1 & b2
+		
+		allBid = C206_CaseStudy.retrieveAllBids(bidList);  
+		testOutput = String.format("%-10d %-20s %-20s %-20s %-20s %-10d\n", 1, "Acer Laptop", "seller@gmail.com", "buyer@gmail.com", "2021-12-31", 70);
+		testOutput += String.format("%-10d %-20s %-20s %-20s %-20s %-10d\n", 2, "Lenovo Laptop", "seller2@gmail.com", "buyer2@gmail.com", "2021-12-31", 65);
+		assertEquals(testOutput,allBid);  //check expected output = bidList retrieved from C206_CaseStudy
+	}
+	
+	@Test
+	public void testDeleteBid() {
+		assertNotNull(bidList);  //check bidList not null
+		
+		C206_CaseStudy.addBid(bidList,b1);  //add b1 to bidList
+		assertEquals(1,bidList.size());  //check bidList size = 1, after adding b1
+		
+		C206_CaseStudy.deleteBid(bidList,b1.getId());  //delete b1 from bidList
+		assertEquals(0,bidList.size());  //check list size = 0, after deleting b1
+	}
 //------------------------------------------------------------------------------------
 //----------------------------------Deal, Xin Yi--------------------------------------
 //------------------------------------------------------------------------------------
 	@After
 	public void tearDown() throws Exception {
-//--------User , Jovi------
+//------User , Jovi--------
 		uA1 = null;
 		uA2 = null;
 		uAList = null;
 //-------------------------
-//---Category, Cassandra----
+//---Category, Cassandra---
 		C1 = null;
 		C2 = null;
 		categoryList = null;
+//-------------------------
+//---Category, Cassandra---
+		item1 = null;
+		item2 = null;
+		item3 = null;
+		itemList = null;
+//-------------------------
+//------Bid, Halimah-------
+		b1 = null;
+		b2 = null;
+		bidList = null;
 //------------------------
 	}
 	
