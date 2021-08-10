@@ -28,6 +28,10 @@ public class C206_CaseStudy {
 		bidList.add(new Bid(2, "Lenovo Laptop", "seller2@gmail.com", "buyer2@gmail.com", "2021-12-31", 65));
 //------------------------------------------------------------------------------
 //-------------------------------Deal, Xin Yi-----------------------------------
+		ArrayList<Deal> dealList = new ArrayList<Deal>();
+		
+		dealList.add(new Deal(1,"Apple Macbook", 123, "buyer@gmail.com", "seller@gmail.com", "10/08/2021"));
+	    dealList.add(new Deal(2,"Apple Iphone", 123, "buyer@gmail.com", "seller@gmail.com", "10/08/2021"));
 //------------------------------------------------------------------------------
 		int option = 0;
 
@@ -36,136 +40,172 @@ public class C206_CaseStudy {
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
-				System.out.println("1. View all User Account");
-				System.out.println("2. Add User Account");
-				System.out.println("3. Delete User Account");
-				System.out.println("4. Quit");
-				option = Helper.readInt("Enter an option > ");
-				if (option == 1) {
-					// View all items
-					C206_CaseStudy.viewAllUserAccount(uAList);  					
-				} else if (option == 2) {
-					// Add a new item
-					C206_CaseStudy.setHeader("ADD User Account");			
-					userAccount uA = inputUserAccount();
-					boolean isValid = C206_CaseStudy.checkAddUserAccount(uA);
-					if (isValid == true) {
-						C206_CaseStudy.addUserAccount(uAList, uA);
-					} else {
-						System.out.println("Please enter all required details3");
-					}
+				int uAOption = -1;
+				while (uAOption != 4) {
+					C206_CaseStudy.uAMenu();
+					uAOption = Helper.readInt("Enter an option > ");
+					if (uAOption == 1) {
+						// View all items
+						C206_CaseStudy.viewAllUserAccount(uAList);  					
+					} else if (uAOption == 2) {
+						// Add a new item
+						C206_CaseStudy.setHeader("ADD User Account");			
+						userAccount uA = inputUserAccount();
+						boolean isValid = C206_CaseStudy.checkAddUserAccount(uA);
+						if (isValid == true) {
+							C206_CaseStudy.addUserAccount(uAList, uA);
+						} else {
+							System.out.println("Please enter all required details3");
+						}
 
-				}else if (option == 3) {
-					C206_CaseStudy.setHeader("Delete Account");	
-					C206_CaseStudy.retrieveAllUserAccount(uAList);
-					C206_CaseStudy.deleteUserAccount(uAList);
-							
-				}else if (option == 4){
-					System.out.println("Bye!");
-				} else {
-					System.out.println("Invalid option");
+					}else if (uAOption == 3) {
+						C206_CaseStudy.setHeader("Delete Account");	
+						C206_CaseStudy.retrieveAllUserAccount(uAList);
+						C206_CaseStudy.deleteUserAccount(uAList);
+								
+					}else if (uAOption != 4){
+						System.out.println("Invalid option");
+					}
 				}
+					System.out.println("You have exited the User Account Menu");
+			
 					
 			} else if (option == 2) {
-				System.out.println("1. View all Category");
-				System.out.println("2. Add category");
-				System.out.println("3. Delete category");
-				System.out.println("4. Quit");
-				int choice = Helper.readInt("Enter an option > ");
-				if (choice == 1) {
-					// View all category
-					C206_CaseStudy.setHeader("View Category");
-					C206_CaseStudy.viewAllCategory(categoryList);
-				}else if (choice == 2) {
-					// Add category
-					C206_CaseStudy.setHeader("Add Category");
-					Category name = inputCategory();
-					C206_CaseStudy.addCategory(categoryList, name);
-				}else if (choice == 3) {
-					// Delete category 
-					C206_CaseStudy.setHeader("Delete Category");
-					C206_CaseStudy.viewAllCategory(categoryList);
-					C206_CaseStudy.deleteCategory(categoryList);
-				}else if (choice == 4){
-					System.out.println("Quit");
-				}else {
-					System.out.println("Invalid option");
+				int choice = -1;
+				while (choice != 4) {
+					C206_CaseStudy.categoryMenu();
+					choice = Helper.readInt("Please enter an option > ");
+					
+					if (choice == 1) {
+						C206_CaseStudy.setHeader("View Category");
+						C206_CaseStudy.viewAllCategory(categoryList);
+						
+					} else if (choice == 2) {
+						C206_CaseStudy.setHeader("Add Category");
+						Category name = inputCategory();
+						boolean isValid = C206_CaseStudy.isValid(name);
+						if (isValid == true) {
+							C206_CaseStudy.addCategory(categoryList, name);
+						}else {
+							System.out.println("Please enter a valid name!");
+						}
+						
+						
+					} else if (choice == 3) {
+						C206_CaseStudy.setHeader("Delete Category");
+						C206_CaseStudy.viewAllCategory(categoryList);
+						C206_CaseStudy.deleteCategory(categoryList);
+						
+					} else if (choice != 4){
+						System.out.println("Invalid Option");
+					}
 				}
+				
+				System.out.println("You have exited the Category Menu");
 
 			} else if (option == 3) {
-				System.out.println("1. View all Item");
-				System.out.println("2. Add Item");
-				System.out.println("3. Delete Item");
-				System.out.println("4. Quit");
-				option = Helper.readInt("Enter an option > ");
-				if (option == 1) {
-					//view all items
-					C206_CaseStudy.viewAllItem(itemList);
+				int itemOption = -1;
+				while (itemOption != 4) {
+					C206_CaseStudy.itemMenu();
+					itemOption = Helper.readInt("Enter an option > ");
+					if (itemOption == 1) {
+						//view all items
+						C206_CaseStudy.viewAllItem(itemList);
+					}
+					else if (itemOption == 2) {
+						//add an item
+						Item item = inputItem();
+						boolean isValid = C206_CaseStudy.checkInputItem(item);
+						if (isValid == true) {
+							C206_CaseStudy.addItem(itemList, item);
+						}
+						else {
+							System.out.println("Invalid item details entered.");
+						}
+					}
+					else if (itemOption == 3) {
+						//delete an item
+						C206_CaseStudy.viewAllItem(itemList);
+						String name = Helper.readString("Enter item name to delete > ");
+						boolean deleteResult = C206_CaseStudy.deleteItem(itemList, name);
+						if (deleteResult==true) {
+							System.out.println("Item successfully deleted.");
+						}
+						else {
+							System.out.println("Item does not exist.");
+						}
+					} else if (itemOption != 4) {
+						System.out.println("Invalid option");	
+					}
 				}
-				else if (option == 2) {
-					//add an item
-					Item item = inputItem();
-					boolean isValid = C206_CaseStudy.checkInputItem(item);
-					if (isValid == true) {
-						C206_CaseStudy.addItem(itemList, item);
-					}
-					else {
-						System.out.println("Invalid item details entered.");
-					}
-				}
-				else if (option == 3) {
-					//delete an item
-					C206_CaseStudy.viewAllItem(itemList);
-					String name = Helper.readString("Enter item name to delete > ");
-					boolean deleteResult = C206_CaseStudy.deleteItem(itemList, name);
-					if (deleteResult==true) {
-						System.out.println("Item successfully deleted.");
-					}
-					else {
-						System.out.println("Item does not exist.");
-					}
-				} else if (option == 4) {
-					System.out.println("Bye!");
-					
-				} else {
-					System.out.println("Invalid option");
-				}						
+				
+				System.out.println("You have exited the Item Menu");			
+				
 			} else if (option == 4) {
-				System.out.println("1. View all Bid");
-				System.out.println("2. Add Bid");
-				System.out.println("3. Delete Bid");
-				System.out.println("4. Quit");
-				option = Helper.readInt("Enter an option > ");
-				
-				if (option == 1) {
-					//show all bid transactions
-					C206_CaseStudy.viewAllBids(bidList);
-		
-				} else if (option == 2) {
-					//add bid transaction
-					Bid b1 = inputBid();
-					C206_CaseStudy.addBid(bidList, b1);
+				int bidOption = -1;
+				while (bidOption != 4) {
+					C206_CaseStudy.bidMenu();
+					bidOption = Helper.readInt("Enter an option > ");
 					
-				} else if (option == 3) {
-					//Delete bid transaction
-					C206_CaseStudy.retrieveAllBids(bidList);
-					int id = Helper.readInt("Enter bid ID > ");				
-					boolean deleteResult = C206_CaseStudy.deleteBid(bidList, id);
-					
-					if(deleteResult == true) {
-						System.out.println("Bid transaction successfully deleted");
-					} else {
-						System.out.println("Bid transaction does not exist");
+					if (bidOption == 1) {
+						//show all bid transactions
+						C206_CaseStudy.retrieveAllBids(bidList);
+			
+					} else if (bidOption == 2) {
+						//add bid transaction
+						Bid b1 = inputBid();
+						C206_CaseStudy.addBid(bidList, b1);
+						
+					} else if (bidOption == 3) {
+						//Delete bid transaction
+						C206_CaseStudy.retrieveAllBids(bidList);
+						int id = Helper.readInt("Enter bid ID > ");				
+						boolean deleteResult = C206_CaseStudy.deleteBid(bidList, id);
+						
+						if(deleteResult == true) {
+							System.out.println("Bid transaction successfully deleted");
+						} else {
+							System.out.println("Bid transaction does not exist");
+						}
+						
+					} else if (bidOption != 4){
+						System.out.println("Invalid option");
+						
 					}
 					
-				} else if (option == 4){
-					System.out.println("Bye!");
-					
-				} else {
-					System.out.println("Invalid option");
-				}	
-			} else if (option == 5) {
+				}
 				
+				System.out.println("You have exited the Bid Menu");
+				
+			} else if (option == 5) {
+				int dealOpt = -1;
+				while (dealOpt != 4) {
+					C206_CaseStudy.dealMenu();
+					dealOpt = Helper.readInt("Please enter an option > ");
+					
+					if (dealOpt == 1) {
+						C206_CaseStudy.viewAllDeals(dealList);
+												
+					} else if (dealOpt == 2) {
+						Deal deal = inputDeal();
+						C206_CaseStudy.addDeal(dealList, deal);
+						
+					} else if (dealOpt == 3) {
+						int deleteID = deleteID();
+						Boolean isDeleted = deleteDeal(dealList, deleteID);
+						
+						if (isDeleted == true) {
+							System.out.println("Deal ID:" + deleteID + " is Deleted Successfully");
+						} else {
+							System.out.println("Deal ID:" + deleteID + " Does Not Exist");
+						}
+						
+					} else if (dealOpt != 4){
+						System.out.println("Invalid Option");
+					}
+				}
+				
+				System.out.println("You have exited the Deal Menu");	
 				
 			}else if (option == 6) {
 				System.out.println("Goodbye!");
@@ -205,6 +245,13 @@ public class C206_CaseStudy {
 	}
 //------------------------------------------------------------------------------
 //----------------------------------User, Jovi ---------------------------------
+	public static void uAMenu() {
+		C206_CaseStudy.setHeader("USER ACCOUNT MENU");
+		System.out.println("1. View all User Account");
+		System.out.println("2. Add User Account");
+		System.out.println("3. Delete User Account");
+		System.out.println("4. Quit");
+	}
 	//================================= Option 1 View items (CRUD- Read) =================================
 	public static String retrieveAllUserAccount (ArrayList<userAccount> uAList) {
 		String output = "";
@@ -286,12 +333,19 @@ public class C206_CaseStudy {
 
 //------------------------------------------------------------------------------
 //-----------------------------Category, Cassandra------------------------------
+	 public static void categoryMenu() {
+			C206_CaseStudy.setHeader("CATEGORY MENU");
+			System.out.println("1. View All Categories");
+			System.out.println("2. Add Category");
+			System.out.println("3. Delete Category");
+			System.out.println("4. Quit");
+		}
 	//================================= Option 1 View category (CRUD- Read) =================================
 	public static String retrieveAllCategory(ArrayList<Category> categoryList) {
 		String output = "";
 
 		for (int i = 0; i < categoryList.size(); i++) {
-			output += String.format("%-10s\n", categoryList.get(i).getName());
+			output += String.format("%d. %-10s\n",i+1, categoryList.get(i).getName());
 		}
 		return output;
 	}
@@ -309,6 +363,14 @@ public class C206_CaseStudy {
 		Category C= new Category(name);
 		return C;
 		
+	}
+	public static boolean isValid(Category C) {
+		boolean isValid = false;
+		if (C.getName().length()!=0) {
+		isValid = true;	
+		}
+		
+		return isValid;
 	}
 	public static void addCategory(ArrayList<Category> categoryList, Category C) {
 		
@@ -328,6 +390,7 @@ public class C206_CaseStudy {
 			if (name.equalsIgnoreCase(CName)&& categoryList.get(i).isAvailable() == true) {
 				
 				categoryList.get(i).setAvailable(false);
+				categoryList.remove(i);
 				isDeleted = true;
 				
 			}
@@ -346,6 +409,14 @@ public class C206_CaseStudy {
 	}
 //------------------------------------------------------------------------------	
 //-------------------------------Item, Ariqah-----------------------------------
+	public static void itemMenu() {
+		C206_CaseStudy.setHeader("ITEM MENU");
+		System.out.println("1. View all Item");
+		System.out.println("2. Add Item");
+		System.out.println("3. Delete Item");
+		System.out.println("4. Quit");
+	}
+	
 	public static String retrieveAllItem(ArrayList<Item> itemList) {
 		String output = "";
 		
@@ -419,6 +490,14 @@ public class C206_CaseStudy {
 
 //------------------------------------------------------------------------------
 //-------------------------------Bid, Halimah-----------------------------------
+	public static void bidMenu() {
+		C206_CaseStudy.setHeader("BID MENU");
+		System.out.println("1. View all Bid");
+		System.out.println("2. Add Bid");
+		System.out.println("3. Delete Bid");
+		System.out.println("4. Quit");
+	}
+	
 	public static Bid inputBid() {
 		int id = Helper.readInt("Enter bid ID > ");
 		String name = Helper.readString("Enter bid item name > ");
@@ -469,6 +548,129 @@ public class C206_CaseStudy {
 	}
 //------------------------------------------------------------------------------
 //-------------------------------Deal, Xin Yi-----------------------------------
+	//===== DEAL MENU =====
+		public static void dealMenu() {
+			C206_CaseStudy.setHeader("DEAL MENU");
+			System.out.println("1. View All Deals");
+			System.out.println("2. Add Deal");		
+			System.out.println("3. Delete Deal");
+			System.out.println("4. Quit");
+		}
+		
+		//===== ADD DEAL=====
+		public static Deal inputDeal() {
+			int dealID = Helper.readInt("Enter deal ID > ");
+			String item = Helper.readString("Enter item > ");
+			
+			
+			//Checks item name for null
+			while (item.length()==0) { 
+				System.out.println("**Do Not Leave The Item Field Empty** \n");
+				item = Helper.readString("Enter item > ");
+			} 	
+			
+			double price = Helper.readDouble("Enter transaction price > ");
+			String buyerEmail = Helper.readString("Enter buyer email (example@email.com) > ");
+			
+			
+			//Checks buyer email for null
+			while (buyerEmail.length()==0 || !buyerEmail.contains("@") || !buyerEmail.contains(".com")) {
+				if (buyerEmail.length()==0) {
+					System.out.println("**Do Not Leave The Buyer Email Field Empty** \n");
+					
+				} else if (!buyerEmail.contains("@") || !buyerEmail.contains(".com")) {
+					System.out.println("**Invalid email address**");
+					
+				}
+				
+				buyerEmail = Helper.readString("Enter buyer email (example@email.com) > ");
+			} 
+			
+			String sellerEmail = Helper.readString("Enter seller email (example@email.com) > ");
+			
+			
+			//Checks seller email for null
+			while (sellerEmail.length()==0 || !sellerEmail.contains("@") || !sellerEmail.contains(".com")) {
+				if (sellerEmail.length()==0) {
+					System.out.println("**Do Not Leave The Seller Email Field Empty** \n");
+					
+				} else if (!sellerEmail.contains("@") || !sellerEmail.contains(".com")) {
+					System.out.println("**Invalid email address**");
+					
+				}			
+
+				sellerEmail = Helper.readString("Enter seller email (example@email.com) > ");
+			} 
+			
+			String date = Helper.readString("Enter closing date (DD-MM-YYYY) > ");
+			
+			
+			//Checks closing date for null
+			while (date.length()!=10) {
+				System.out.println("**Do Not Leave The Date Field Empty** \n");
+				date = Helper.readString("Enter closing date (DD-MM-YYYY) > ");
+			} 
+			
+			
+			Deal deal = new Deal(dealID, item, price, buyerEmail, sellerEmail, date);
+			return deal;
+		}
+		
+		
+		public static void addDeal(ArrayList<Deal> dealList, Deal deal) {
+			
+			dealList.add(deal);
+			System.out.println("Deal added");
+		}
+		
+		
+		//=====VIEW ALL DEALS=====
+		public static String retrieveAllDeals(ArrayList<Deal> dealList) {
+			String output = "";
+
+			for (int i = 0; i < dealList.size(); i++) {
+
+				output += String.format("%-5d %-25s %-10.2f %-25s %-25s %-35s\n", dealList.get(i).getDealID(),
+						dealList.get(i).getItem(), dealList.get(i).getPrice(), 
+						dealList.get(i).getBuyerEmail(), dealList.get(i).getSellerEmail(), 
+						dealList.get(i).getCloseDate());
+			}
+			return output;
+		}
+		
+		public static void viewAllDeals(ArrayList<Deal> dealList) {
+			
+			C206_CaseStudy.setHeader("DEALS LIST");
+			String output = String.format("%-5s %-25s %-10s %-25s %-25s %-10s\n", "ID", "ITEM", "PRICE",
+					"BUYER EMAIL", "SELLER EMAIL", "CLOSE DATE");
+			 output += retrieveAllDeals(dealList);
+			System.out.println(output);
+		}
+
+		
+		//=====DELETE DEAL=====
+		private static int deleteID() {
+			int dealID = Helper.readInt("Enter deal ID > ");
+			return dealID;
+		}
+		
+		public static boolean deleteDeal(ArrayList<Deal> dealList, int dealID) {
+			Boolean isDeleted = false;
+			
+			for (int i = 0; i < dealList.size(); i++) {
+				if (dealList.get(i).getDealID() == dealID) {
+					dealList.remove(i);
+					
+					isDeleted = true;
+					
+					break;
+				}
+			}
+			return isDeleted;
+			
+		}
+
+	  
 //------------------------------------------------------------------------------
 }
 

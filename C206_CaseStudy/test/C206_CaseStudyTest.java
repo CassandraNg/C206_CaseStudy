@@ -34,6 +34,10 @@ public class C206_CaseStudyTest {
 	private ArrayList<Bid> bidList;
 //----------------------------------------
 //---------------Deal, Xin Yi-------------
+	private Deal d1;
+	private Deal d2;
+	  
+	private ArrayList<Deal> dealList;
 //----------------------------------------	
 	public C206_CaseStudyTest() {
 		 
@@ -69,6 +73,11 @@ public class C206_CaseStudyTest {
 	b2 = new Bid(2, "Lenovo Laptop", "seller2@gmail.com", "buyer2@gmail.com", "2021-12-31", 65);
 //------------------------------------------
 //---------------Deal, Xin Yi---------------
+	//prepare Test Data
+	d1 = new Deal(1,"Apple Macbook", 123.00, "buyer@gmail.com", "seller@gmail.com", "10/08/2021");
+	d2 = new Deal(2,"Apple Iphone", 123.00, "buyer@gmail.com", "seller@gmail.com", "10/08/2021");
+	
+	dealList = new ArrayList<Deal>();
 //------------------------------------------
 	}
 //---------------------------User, Jovi--------------------------------------------------
@@ -326,6 +335,76 @@ public void testDeleteUserAccount() {
 	}
 //------------------------------------------------------------------------------------
 //----------------------------------Deal, Xin Yi--------------------------------------
+	@Test
+	public void addDealTest() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Check if there is valid Deal arraylist to add to", dealList);
+		
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1
+		C206_CaseStudy.addDeal(dealList, d1);
+		
+		//The deal added is as same as the first deal of the list
+		assertEquals("Check that Deal arraylist size is 1", 1, dealList.size());
+		assertSame("Check that Deal 1 is added", d1, dealList.get(0));
+		
+		
+		//Add another deal. test The size of the list is 2
+		C206_CaseStudy.addDeal(dealList, d2);
+		
+		//The deal just added is as same as the second deal of the list
+		assertEquals("Check that Deal arraylist size is 2", 2, dealList.size());
+		assertSame("Check that Deal 2 is added", d2, dealList.get(1));
+	}
+	
+	@Test
+	public void retrieveAllDealsTest() {
+		// Test if Item list is not null but empty
+		assertNotNull("Check if there is valid Deal arraylist to retrieve item", dealList);
+		
+		
+		//test if the list of deals retrieved from the CaseStudy is empty
+		String allDeals= C206_CaseStudy.retrieveAllDeals(dealList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllDealList", testOutput, allDeals);
+		
+		
+		//Given an empty list, after adding 2 deals, test if the size of the list is 2
+		C206_CaseStudy.addDeal(dealList, d1);
+		C206_CaseStudy.addDeal(dealList, d2);
+		assertEquals("Test that Deal arraylist size is 2", 2, dealList.size());
+		
+		
+		//test if the expected output string same as the list of deals retrieved from the CaseStudy	
+		allDeals= C206_CaseStudy.retrieveAllDeals(dealList);
+		testOutput = String.format("%-5d %-25s %-10.2f %-25s %-25s %-35s\n",1,"Apple Macbook", 123.00, "buyer@gmail.com", "seller@gmail.com", "10/08/2021");
+		testOutput += String.format("%-5d %-25s %-10.2f %-25s %-25s %-35s\n",2,"Apple Iphone", 123.00, "buyer@gmail.com", "seller@gmail.com", "10/08/2021");
+	
+		assertEquals("Test that ViewAllDealList", testOutput, allDeals);
+		
+	}
+	
+	@Test
+	public void doDeleteDealTest() {
+		// Test if Item list is not null
+		assertNotNull("Test if there is valid Deal arraylist to add to", dealList);
+		
+		
+		//Test to delete with an invalid dealID
+		Boolean isDeleted = C206_CaseStudy.deleteDeal(dealList, 999);
+		assertFalse("Test if invalid dealID is returned", isDeleted);	
+		
+		
+		//Add a new deal
+		C206_CaseStudy.addDeal(dealList, d1);
+		
+		//Test to delete with a valid dealID
+		C206_CaseStudy.addDeal(dealList, d1);
+		isDeleted = C206_CaseStudy.deleteDeal(dealList, d1.getDealID());
+		assertTrue("Test if valid dealID is returned", isDeleted);
+		
+	}
+
 //------------------------------------------------------------------------------------
 	@After
 	public void tearDown() throws Exception {
@@ -349,6 +428,11 @@ public void testDeleteUserAccount() {
 		b1 = null;
 		b2 = null;
 		bidList = null;
+//------------------------
+//------Deal, Xin Yi------
+		d1 = null;
+	    d2 = null;
+	    dealList = null;
 //------------------------
 	}
 	
