@@ -418,7 +418,7 @@ public void testDeleteUserAccount() {
 		C2 = null;
 		categoryList = null;
 //-------------------------
-//---Category, Cassandra---
+//------Item, Ariqah-------
 		item1 = null;
 		item2 = null;
 		item3 = null;
