@@ -188,18 +188,18 @@ public void testDeleteUserAccount() {
 				assertEquals("Check that ViewAllCategoryList", testOutput, allCategory);
 	}
 	@Test
-	public void testDoDeleteCategory() {
+	public void testDeleteCategory() {
 		//fail("Not yet implemented");
-		// write your code here
+		
+		assertNotNull(categoryList); 
 		
 		C206_CaseStudy.addCategory(categoryList,C1);
-		assertTrue(categoryList.get(0).isAvailable());
-		C206_CaseStudy.doDeleteCategory(categoryList, "Jewellery");
+		assertEquals(1,categoryList.size());
 		
-		System.out.println("aft delete " + categoryList.get(0).isAvailable());
-		
-		assertFalse(categoryList.get(0).isAvailable());
+		C206_CaseStudy.doDeleteCategory(categoryList,C1.getName()); 
+		assertEquals(0,categoryList.size());
 	}
+	
 //------------------------------------------------------------------------------------
 //----------------------------------Item, Ariqah--------------------------------------
 	@Test

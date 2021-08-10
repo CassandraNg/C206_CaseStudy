@@ -345,7 +345,7 @@ public class C206_CaseStudy {
 		String output = "";
 
 		for (int i = 0; i < categoryList.size(); i++) {
-			output += String.format("%d. %-10s\n",i+1, categoryList.get(i).getName());
+			output += String.format("%-10s\n",categoryList.get(i).getName());
 		}
 		return output;
 	}
@@ -404,7 +404,7 @@ public class C206_CaseStudy {
 		if (isDeleted == false) {
 			System.out.println("Invalid category name");
 		} else {
-			System.out.println("Category " + name + " is deleted"); 
+			System.out.println("Category " + name + " is deleted successfully"); 
 		}
 	}
 //------------------------------------------------------------------------------	
